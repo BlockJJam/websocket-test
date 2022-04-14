@@ -1,8 +1,4 @@
-# Spring 레퍼런스 기반 WebSocket 활용
-
----
-
-# Spring Websocket 서버와 클라이언트를 만들어보자
+# SockJS를 활용한 Spring Websocket 서버와 클라이언트
 
 ---
 
