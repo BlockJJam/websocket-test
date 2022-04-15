@@ -1,15 +1,17 @@
 package com.test.socket.config;
 
 import com.test.socket.handler.TestHandler;
+import org.eclipse.jetty.websocket.api.WebSocketBehavior;
+import org.eclipse.jetty.websocket.api.WebSocketPolicy;
+import org.eclipse.jetty.websocket.servlet.WebSocketServletFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.simp.config.MessageBrokerRegistry;
 import org.springframework.scheduling.TaskScheduler;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
-import org.springframework.web.socket.WebSocketHandler;
 import org.springframework.web.socket.config.annotation.*;
-import org.springframework.web.socket.server.standard.ServletServerContainerFactoryBean;
-import org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor;
+import org.springframework.web.socket.server.jetty.JettyRequestUpgradeStrategy;
+import org.springframework.web.socket.server.support.DefaultHandshakeHandler;
 
 
 @Configuration
@@ -21,7 +23,7 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
     /* Stomp websocket config */
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
-        registry.addEndpoint("/price").withSockJS();
+        registry.addEndpoint("/price").setAllowedOrigins("*");
     }
 
     @Override
